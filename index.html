@@ -5,20 +5,23 @@
     <title>Parameter control</title>
 		<meta charset="utf-8" />
 
+		<!-- jquery 2.1.4 -->
     <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+		<!-- Bootstrap 3.3.5 -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+		<!-- Bootstrap 3.3.5 -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+    
 		<script src="js/parser.js"></script>
 		<script src="js/validation.js"></script>
 		
-		<!-- Bootstrap -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/style.css">
+		<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <div class="wrapper">
-        <table class="table table-bordered">
+        <table id="parameters" class="table table-bordered">
             <caption>Parameters</caption>
             <tr>
-                <th>Id</th>
                 <th>Name</th>
                 <th>Description</th>
                 <th>Type</th>
@@ -26,8 +29,8 @@
                 <th></th>
             </tr>
         </table>
-				<button type="button" class="btn btn-sm btn-default" onclick="addParameter()">Добавть</button>
-				<button type="button" class="btn btn-sm btn-default" onclick="save()">Сохранить</button>
+				<button type="button" class="btn btn-sm btn-default" onclick="addParameter()">Add parameter</button>
+				<button type="button" class="btn btn-sm btn-default" onclick="save()">Save</button>
     </div>
 </body>
 </html>
