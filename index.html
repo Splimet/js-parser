@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Parameter control</title>
+		<meta charset="utf-8" />
+
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+		<script src="js/parser.js"></script>
+		<script src="js/validation.js"></script>
+		
+		<!-- Bootstrap -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="wrapper">
+        <table class="table table-bordered">
+            <caption>Parameters</caption>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Type</th>
+                <th>Value</th>
+                <th></th>
+            </tr>
+        </table>
+				<button type="button" class="btn btn-sm btn-default" onclick="addParameter()">Добавть</button>
+				<button type="button" class="btn btn-sm btn-default" onclick="save()">Сохранить</button>
+    </div>
+</body>
+</html>
