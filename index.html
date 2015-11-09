@@ -30,16 +30,16 @@
                 <th></th>
             </tr>
         </table>
-				<div class="form-inline">
-					<input type="text" placeholder="Name" id="nameParameter" class="form-control">
-					<input type="text" placeholder="Description" id="descriptionParameter" class="form-control">	
-					<input type="text" placeholder="Value" id="valueParameter" class="form-control">	
-					<select size="1" id="typeParameter" class="form-control">
+				<div class="form-inline" id="add-parameter-form">
+					<input type="text" placeholder="Name" id="name-parameter" class="form-control">
+					<input type="text" placeholder="Description" id="description-parameter" class="form-control">	
+					<input type="text" placeholder="Value" id="value-parameter" class="form-control">	
+					<select size="1" id="type-parameter" class="form-control">
 						<option value="System.String">String</option>
 						<option value="System.Int32">Int32</option>
 						<option value="System.Boolean">Boolean</option>
 					</select>	
-					<button type="submit" class="btn btn-sm btn-default" onclick="addParameter()">Add parameter</button>					
+					<button type="button" class="btn btn-sm btn-default" onclick="addParameter()">Add parameter</button>					
 				</div>
 				<div class="margin-top">
 					<button type="button" class="btn btn-sm btn-default" onclick="save()">Save</button>

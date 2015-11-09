@@ -26,11 +26,11 @@ function createRow(name, description, parameter) {
 					'<td>' + description.value + '</td>' +
 					'<td>' + parameter.type + '</td>' +
 					'<td>' + createCell(parameter) + '</td>' +	
-					'<td><button type="button" class="btn btn-xs btn-default">Delete</button></td>' +
+					'<td><button type="button" class="btn btn-xs btn-default" onclick="deleteParameter($(this).closest(\'tr\'))">Delete</button></td>' +
 				'</tr>';
 }
 
-function createCell( field ){
+function createCell(field) {
 	switch ( field.type ) {
 		case TYPE_STRING:
 			return '<input type="text" onchange="" value=' + field.value + '>';
@@ -42,4 +42,19 @@ function createCell( field ){
 				checked = 'checked';
 			return '<input type="checkbox" onchange="" ' + checked + '>';
 	}
+}
+
+function deleteParameter(row) {
+	row.remove();
+}
+function addParameter() {
+	var 
+			name = $('#add-parameter-form #name-parameter').val(),
+			description = $('#add-parameter-form #description-parameter').val(),
+			value = $('#add-parameter-form #value-parameter').val(),
+			type = $('#add-parameter-form #type-parameter').val();
+
+	$('#parameters').append(createRow({ value: name, type: TYPE_STRING}, 
+																	 { value: description, type: TYPE_STRING},																				
+																	 { value: value, type: type}));
 }
