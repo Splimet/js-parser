@@ -11,7 +11,8 @@
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
 		<!-- Bootstrap 3.3.5 -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
-    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" integrity="sha384-aUGj/X2zp5rLCbBxumKTCw2Z50WgIr1vs/PFN4praOTvYXWlVyh2UtNUU0KAUhAX" crossorigin="anonymous">
+		
 		<script src="js/parser.js"></script>
 		<script src="js/validation.js"></script>
 		
@@ -29,8 +30,20 @@
                 <th></th>
             </tr>
         </table>
-				<button type="button" class="btn btn-sm btn-default" onclick="addParameter()">Add parameter</button>
-				<button type="button" class="btn btn-sm btn-default" onclick="save()">Save</button>
+				<div class="form-inline">
+					<input type="text" placeholder="Name" id="nameParameter" class="form-control">
+					<input type="text" placeholder="Description" id="descriptionParameter" class="form-control">	
+					<input type="text" placeholder="Value" id="valueParameter" class="form-control">	
+					<select size="1" id="typeParameter" class="form-control">
+						<option value="System.String">String</option>
+						<option value="System.Int32">Int32</option>
+						<option value="System.Boolean">Boolean</option>
+					</select>	
+					<button type="submit" class="btn btn-sm btn-default" onclick="addParameter()">Add parameter</button>					
+				</div>
+				<div class="margin-top">
+					<button type="button" class="btn btn-sm btn-default" onclick="save()">Save</button>
+				</div>	
     </div>
 </body>
 </html>
