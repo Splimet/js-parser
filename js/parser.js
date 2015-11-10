@@ -33,14 +33,14 @@ function createRow(name, description, parameter) {
 function createCell(field) {
 	switch ( field.type ) {
 		case TYPE_STRING:
-			return '<input type="text" value=' + field.value + '>';
+			return '<input type="text" value=' + field.value + ' class="form-control">';
 		case TYPE_INT:
-			return '<input type="number" oninput="validationNumberInput($(this))" value=' + field.value + '>';
+			return '<input type="number" oninput="validationNumberInput($(this))" value=' + field.value + ' class="form-control">';
 		case TYPE_BOOL:
 			var checked = '';
 			if ( field.value === 'True' )
 				checked = 'checked';
-			return '<input type="checkbox"' + checked + '>';
+			return '<input type="checkbox"' + checked + ' class="form-control">';
 	}
 }
 function deleteParameter(row) {
