@@ -40,7 +40,7 @@ function createCell(field) {
 			var checked = '';
 			if ( field.value === 'True' )
 				checked = 'checked';
-			return '<input type="checkbox"' + checked + ' class="form-control">';
+			return '<input type="checkbox"' + checked + '>';
 	}
 }
 function deleteParameter(row) {
