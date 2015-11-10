@@ -10,6 +10,7 @@ $(document).ready(function () {
         dataType: "xml",
         success: xmlParser
     });
+		changeTypeNewParameter($('#type-parameter'));
 });
 
 function xmlParser(xml) {
@@ -29,7 +30,6 @@ function createRow(name, description, parameter) {
 					'<td><button type="button" class="btn btn-xs btn-default" onclick="deleteParameter($(this).closest(\'tr\'))">Delete</button></td>' +
 				'</tr>';
 }
-
 function createCell(field) {
 	switch ( field.type ) {
 		case TYPE_STRING:
@@ -43,7 +43,6 @@ function createCell(field) {
 			return '<input type="checkbox" onchange="" ' + checked + '>';
 	}
 }
-
 function deleteParameter(row) {
 	row.remove();
 }
@@ -57,4 +56,59 @@ function addParameter() {
 	$('#parameters').append(createRow({ value: name, type: TYPE_STRING}, 
 																	 { value: description, type: TYPE_STRING},																				
 																	 { value: value, type: type}));
+}
+
+
+function changeTypeNewParameter(select) {
+	var type = select.val();
+	var inputValueNewParameter = select.next();
+
+	switch (type) {
+		case TYPE_STRING:
+			inputValueNewParameter.attr('type', 'text');			
+			inputValueNewParameter.addClass("form-control");
+			break;
+		case TYPE_INT:
+			inputValueNewParameter.attr('type', 'number');
+			inputValueNewParameter.addClass("form-control");
+			break;
+		case TYPE_BOOL:
+			inputValueNewParameter.attr('type', 'checkbox');
+			inputValueNewParameter.removeClass("form-control");
+			break;
+		}
+}
+
+
+function translateValueParameter(input) {
+	if (input.attr('type') === 'checkbox') {
+		return input.prop("checked") ? 'True' : 'False';
+	} else { 
+		return input.val();
+	}
+}
+function translateInXML() {
+	var outputXML = '<?xml version=\"1.0\"?>\n<Parameters>\n';
+	$('#parameters tr').each(function() {
+			var tdList = $(this).find('td');
+			if (tdList.length <= 4) return;			
+			outputXML += '<Parameter>\n\r';
+			outputXML += '<Name>' + $(tdList[0]).html() + '</Name>\n';
+			outputXML += '<Description>' + $(tdList[1]).html() + '</Description>\n';
+			outputXML += '<Type>' + $(tdList[2]).html() + '</Type>\n';
+			outputXML += '<Value>' + translateValueParameter($(tdList[3]).find('input')) + '</Value>\n';
+			console.log(translateValueParameter($(tdList[3]).find('input')));
+			outputXML += '</Parameter>\n';
+	});
+	return outputXML + '</Parameters>';
+}
+
+function createFileWithCurentParameter() {
+  var 
+			xml = translateInXML(),
+			link = $('#created-file'),
+			file = new Blob([xml], {type: 'text/plain'});
+  link.attr('href', URL.createObjectURL(file));
+  link.attr('download', 'parameters.xml');
+  link.css('display', 'inline');
 }

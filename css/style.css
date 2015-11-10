@@ -4,3 +4,10 @@
 .margin-top {
 	margin-top: 20px;
 }
+#created-file {
+	display: none;
+}
+#add-parameter-form input[type="checkbox"] {
+	margin: 0 6px;
+	vertical-align: middle;
+}
