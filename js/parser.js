@@ -33,14 +33,14 @@ function createRow(name, description, parameter) {
 function createCell(field) {
 	switch ( field.type ) {
 		case TYPE_STRING:
-			return '<input type="text" onchange="" value=' + field.value + '>';
+			return '<input type="text" value=' + field.value + '>';
 		case TYPE_INT:
-			return '<input type="number" oninput="" value=' + field.value + '>';
+			return '<input type="number" oninput="validationNumberInput($(this))" value=' + field.value + '>';
 		case TYPE_BOOL:
 			var checked = '';
 			if ( field.value === 'True' )
 				checked = 'checked';
-			return '<input type="checkbox" onchange="" ' + checked + '>';
+			return '<input type="checkbox"' + checked + '>';
 	}
 }
 function deleteParameter(row) {
@@ -66,14 +66,17 @@ function changeTypeNewParameter(select) {
 	switch (type) {
 		case TYPE_STRING:
 			inputValueNewParameter.attr('type', 'text');			
+			inputValueNewParameter.attr('oninput', '');
 			inputValueNewParameter.addClass("form-control");
 			break;
 		case TYPE_INT:
 			inputValueNewParameter.attr('type', 'number');
+			inputValueNewParameter.attr('oninput', 'validationNumberInput($(this))');
 			inputValueNewParameter.addClass("form-control");
 			break;
 		case TYPE_BOOL:
 			inputValueNewParameter.attr('type', 'checkbox');
+			inputValueNewParameter.attr('oninput', '');
 			inputValueNewParameter.removeClass("form-control");
 			break;
 		}
@@ -111,4 +114,10 @@ function createFileWithCurentParameter() {
   link.attr('href', URL.createObjectURL(file));
   link.attr('download', 'parameters.xml');
   link.css('display', 'inline');
+}
+
+function validationNumberInput(input) {
+  if (!/(^([+-]?)([1-9]+?)[0-9]*$)|^0$/.test(input.val())) {
+		input.val(input.attr('value'));
+	} else input.attr('value', input.val());
 }
